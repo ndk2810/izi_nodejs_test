@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "03a186d4-716e-4656-9272-26d07e0f16ed",
+		"name": "Izi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15364238"
+	},
+	"item": [
+		{
+			"name": "[POST] Add user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "test regex",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "test regex",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "18",
+							"type": "text"
+						},
+						{
+							"key": "coordinate",
+							"value": "008:002",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/user/add",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Get user info with id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/user/read?id=6056e162-c5df-46da-bcb6-e5a5feea547e",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"read"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6056e162-c5df-46da-bcb6-e5a5feea547e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Search user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/user/search?name=ng",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "ng"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PUT] Edit user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "Khang",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Ngo",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "22",
+							"type": "text"
+						},
+						{
+							"key": "coordinate",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/user/edit/f5256f56-eb8a-47fe-b035-37d0a78868f5",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"edit",
+						"f5256f56-eb8a-47fe-b035-37d0a78868f5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[DELETE] Delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "localhost:3000/user/edit/e643dfdb-a5f7-4f61-8ab7-b947f7b3bf3a",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"edit",
+						"e643dfdb-a5f7-4f61-8ab7-b947f7b3bf3a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Locate closest users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/locate?n=3&userId=f5256f56-eb8a-47fe-b035-37d0a78868f5",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"locate"
+					],
+					"query": [
+						{
+							"key": "n",
+							"value": "3"
+						},
+						{
+							"key": "userId",
+							"value": "f5256f56-eb8a-47fe-b035-37d0a78868f5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
