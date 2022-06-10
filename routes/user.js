@@ -27,7 +27,7 @@ router.post('/add', async (req, res) => {
         return res.json({
             success: false,
             data: null,
-            error: "Coordinate không hợp lệ"
+            error: "Coordinate không hợp lệ (VD: xxx:yyy)"
         })
 
     const db = await fs.readJson('./db.json')
