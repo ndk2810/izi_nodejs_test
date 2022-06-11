@@ -33,7 +33,11 @@ router.get('/', async (req, res) => {
     closestUsers.shift()
     closestUsers.length = numUsers
 
-    return res.json(closestUsers)
+    return res.json({
+        success: true,
+        data: closestUsers,
+        error: null
+    })
 })
 
 module.exports = router

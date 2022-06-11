@@ -6,16 +6,17 @@ const fs = require('fs-extra')
 router.post('/add', async (req, res) => {
     const newUser = req.body
 
-    for (property in newUser){
+    for (property in newUser) {
         if (!newUser[property]) {
-        return res.json({
-            success: false,
-            data: null,
-            error: "Thiếu thông tin"
-        })
-    }}
+            return res.json({
+                success: false,
+                data: null,
+                error: "Thiếu thông tin"
+            })
+        }
+    }
 
-    if (parseInt(newUser.age) < 1 || parseInt(newUser.age) > 100){
+    if (parseInt(newUser.age) < 1 || parseInt(newUser.age) > 100) {
         return res.json({
             success: false,
             data: null,
@@ -37,7 +38,11 @@ router.post('/add', async (req, res) => {
 
     fs.writeJson('./db.json', db, function (err) {
         if (err)
-            return console.log(err)
+            return res.json({
+                success: false,
+                data: null,
+                error: err
+            })
 
         return res.json({
             success: true,
@@ -50,7 +55,7 @@ router.post('/add', async (req, res) => {
 //[GET] Get user info
 router.get('/read', async (req, res) => {
     const id = req.query.id
-    
+
     const db = await fs.readJson('./db.json')
     const user = db.listUser.find(user => user.id === id)
 
@@ -60,7 +65,7 @@ router.get('/read', async (req, res) => {
             data: null,
             error: "Không tìm thấy user"
         })
-    
+
     return res.json({
         success: true,
         data: user,
@@ -85,7 +90,7 @@ router.get('/search', async (req, res) => {
         if (a.firstname > b.firstname) {
             return -1;
         }
-        
+
         return 0;
     })
 
@@ -95,7 +100,7 @@ router.get('/search', async (req, res) => {
             data: null,
             error: "Không tìm thấy user nào với tên đó"
         })
-    
+
     return res.json({
         success: true,
         data: searchList,
@@ -107,7 +112,7 @@ router.get('/search', async (req, res) => {
 router.put('/edit/:id', async (req, res) => {
     const id = req.params.id
     const newInfo = req.body
-    
+
     const db = await fs.readJson('./db.json')
     const user = db.listUser.find(user => user.id === id)
     const index = db.listUser.indexOf(user)
@@ -119,7 +124,11 @@ router.put('/edit/:id', async (req, res) => {
 
     fs.writeJson('./db.json', db, function (err) {
         if (err)
-            return console.log(err)
+            return res.json({
+                success: false,
+                data: null,
+                error: err
+            })
 
         return res.json({
             success: true,
@@ -138,7 +147,11 @@ router.delete('/edit/:id', async (req, res) => {
 
     fs.writeJson('./db.json', db, function (err) {
         if (err)
-            return console.log(err)
+            return res.json({
+                success: false,
+                data: null,
+                error: err
+            })
 
         return res.json({
             success: true,
